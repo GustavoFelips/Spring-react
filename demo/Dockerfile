@@ -3,7 +3,8 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
-RUN mvn clean package -DskipTests
+RUN ./mvnw clean install -DskipTests
+
 FROM openjdk:22-jdk
 WORKDIR /app.
 COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.Jar app.jar
