@@ -6,8 +6,7 @@ COPY src ./src
 RUN mvn clean install -DskipTests
 
 FROM openjdk:22-jdk
-WORKDIR /app.
-COPY --from=build /app/target/demo-0.0.1-SNAPSHOT.Jar app.jar
+WORKDIR /app
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
